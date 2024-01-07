@@ -5,7 +5,7 @@ stages
 
 { 
 stage ('scm_checkout')
-  { steps { git branch: 'master', url: 'https://github.com/akash14m/maven-new.git' } }
+  { steps { git branch: 'main', url: 'https://github.com/akash14m/maven-new.git' } }
 
 
 stage ('build the code')
