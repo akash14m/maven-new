@@ -11,4 +11,4 @@ stage ('scm_checkout')
 stage ('build the code')
 { steps { withMaven(globalMavenSettingsConfig: 'f5ef3073-a8fa-4a58-8fc3-4d6f7a79922c', jdk: 'JAVA_HOME', maven: 'MAVEN_HOME', mavenSettingsConfig: '6ce0a00b-0391-4321-843e-f84d68e58079', traceability: true) 
  {  sh 'mvn package' } 
-} } 
+} } } 
