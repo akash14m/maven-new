@@ -3,27 +3,16 @@ pipeline
 agent any
 stages 
 
-{ stage ('scm_checkout')
-  { steps { git branch: 'master', url: 'https://github.com/prakashk0301/maven-project.git' } }
-
-
-  stage ('execute unit test')
-  {steps { withMaven(globalMavenSettingsConfig: '15a8520f-ebc1-4c5f-95a7-1c052ffb1c6c', jdk: 'LocalJDK', maven: 'LocalMVN', mavenSettingsConfig: '7c4be8a0-0f31-4062-8458-e3dac7ad9341', traceability: true) 
-{ sh 'mvn test' } 
- }}
+{ 
+stage ('scm_checkout')
+  { steps { git branch: 'master', url: 'https://github.com/akash14m/maven-new.git' } }
 
 
 stage ('build the code')
-{ steps { withMaven(globalMavenSettingsConfig: '15a8520f-ebc1-4c5f-95a7-1c052ffb1c6c', jdk: 'LocalJDK', maven: 'LocalMVN', mavenSettingsConfig: '7c4be8a0-0f31-4062-8458-e3dac7ad9341', traceability: true) 
+{ steps { withMaven(globalMavenSettingsConfig: 'f5ef3073-a8fa-4a58-8fc3-4d6f7a79922c', jdk: 'JAVA_HOME', maven: 'MAVEN_HOME', mavenSettingsConfig: '6ce0a00b-0391-4321-843e-f84d68e58079', traceability: true) 
  {  sh 'mvn package' } 
 } } 
 
-stage ('docker build and push')
-{ steps { // This step should not normally be used in your script. Consult the inline help for details.
-withDockerRegistry(credentialsId: 'ecr:eu-central-1:awsaccount', url: 'https://040872219986.dkr.ecr.eu-central-1.amazonaws.com/myregistry') 
-{ sh 'docker build -t 707417283920.dkr.ecr.ap-south-1.amazonaws.com/docker-myecr:latest .'
-  sh ' docker push 707417283920.dkr.ecr.ap-south-1.amazonaws.com/docker-myecr:latestt'} 
-} }
 
-}
-}
+
+
